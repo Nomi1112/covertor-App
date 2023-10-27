@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area Converter</title>
+</head>
+<title>Area Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        background-color: #0074a3;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0;
+    }
+
+    input[type="submit"] {
+        background-color: #0074a3;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #005480;
+    }
+
+    #areaResult, #tempResult, #areaMarlaResult {
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+    }
+</style>
+<body>
+    <h1>Area Converter</h1>
+    <form id="yardsConverterForm">
+        <label for="yards">Enter Area in Yards:</label>
+        <input type="number" id="yards" placeholder="Enter yards area" required>
+        <input type="submit" value="Convert">
+    </form>
+    <div id="areaResult"></div> <!-- Unique ID for area conversion result -->
+
+    <h1>Temperature Converter</h1>
+    <form id="tempConverterForm">
+        <label for="celsius">Enter Temperature in Celsius:</label>
+        <input type="number" id="celsius" placeholder=" " required>
+        <input type="submit" value="Convert">
+    </form>
+    <div id="tempResult"></div> <!-- Unique ID for temperature conversion result -->
+
+    <h1>Marla Converter</h1>
+    <form id="marlaConverterForm">
+        <label for="marla">Enter Area in Marla:</label>
+        <input type="number" id="marla" placeholder="Enter Marla area" required>
+        <input type="submit" value="Convert">
+    </form>
+    <div id="areaMarlaResult"></div>  <!-- Unique ID for Marla Converter result -->
+
+    <script>
+        // Function to convert Yards to Square Feet
+        function convertYardsToSquareFeet() {
+            const yards = parseFloat(document.getElementById('yards').value);
+            const squareFeet = yards * 9; // 1 yard is equal to 9 square feet
+            const resultDiv = document.getElementById('areaResult');
+            resultDiv.innerHTML = `${yards} yards is equal to ${squareFeet.toFixed(2)} square feet`;
+        }
+
+        // Handle area form submission for yards
+        const yardsForm = document.getElementById('yardsConverterForm');
+        yardsForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting
+            convertYardsToSquareFeet();
+        });
+
+        // Function to convert Marla to Square Feet
+        function convertMarlaToSquareFeet() {
+            const marla = parseFloat(document.getElementById('marla').value);
+            const squareFeet = marla * 272; // 1 Marla is equal to 272 square feet
+            const resultDiv = document.getElementById('areaMarlaResult');
+            resultDiv.innerHTML = `${marla} Marla is equal to ${squareFeet.toFixed(2)} square feet`;
+        }
+
+        // Handle area form submission for marla
+        const marlaForm = document.getElementById('marlaConverterForm');
+        marlaForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting
+            convertMarlaToSquareFeet();
+        });
+
+        // Function to convert Celsius to Fahrenheit
+        function convertTemperature() {
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            const fahrenheit = (celsius * 9/5) + 32;
+            const resultDiv = document.getElementById('tempResult');
+            resultDiv.innerHTML = `${celsius} &deg;C is equal to ${fahrenheit.toFixed(2)} &deg;F`;
+        }
+
+        // Handle temperature form submission
+        const tempForm = document.getElementById('tempConverterForm');
+        tempForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting
+            convertTemperature();
+        });
+    </script>
+</body>
+</html>
